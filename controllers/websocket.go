@@ -50,6 +50,13 @@ func (this *WebSocketController) Join() {
 		return
 	}
 
+	beego.Info("join headers:")
+	for k, v := range this.Ctx.Request.Header {
+		for _, value := range v {
+			beego.Info(k, value)
+		}
+	}
+
 	// Upgrade from http request to WebSocket.
 	ws, err := websocket.Upgrade(this.Ctx.ResponseWriter, this.Ctx.Request, nil, 1024, 1024)
 	if _, ok := err.(websocket.HandshakeError); ok {
