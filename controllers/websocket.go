@@ -50,10 +50,10 @@ func (this *WebSocketController) Join() {
 		return
 	}
 
-	beego.Info("join headers:")
+	beego.Critical("join headers:")
 	for k, v := range this.Ctx.Request.Header {
 		for _, value := range v {
-			beego.Info(k, value)
+			beego.Critical(k, value)
 		}
 	}
 
